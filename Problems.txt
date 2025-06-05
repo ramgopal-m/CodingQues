@@ -1,0 +1,215 @@
+// Medium 1. Reverse an Array Using Pointers
+#include <iostream>
+using namespace std;
+int main() {
+    int n; cin >> n;
+    int *a = new int[n];
+    for(int i=0; i<n; i++) cin >> a[i];
+    int *start = a, *end = a + n - 1;
+    while(start < end) {
+        int temp = *start;
+        *start = *end;
+        *end = temp;
+        start++; end--;
+    }
+    for(int i=0; i<n; i++) cout << a[i] << " ";
+    delete[] a;
+    return 0;
+}
+
+// Medium 2. Count Vowels in a String Using Pointers
+#include <iostream>
+using namespace std;
+int main() {
+    char str[1000];
+    cin.getline(str, 1000);
+    char *p = str;
+    int count = 0;
+    while(*p) {
+        char c = *p;
+        if(c=='a'||c=='e'||c=='i'||c=='o'||c=='u'||c=='A'||c=='E'||c=='I'||c=='O'||c=='U') count++;
+        p++;
+    }
+    cout << count;
+    return 0;
+}
+
+
+// Medium 3. Dynamic Memory Allocation for Array Using Pointers
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+int main() {
+    int n; cin >> n;
+    int *arr = (int*)malloc(n * sizeof(int));
+    for(int i=0; i<n; i++) cin >> arr[i];
+    for(int i=0; i<n; i++) cout << arr[i] << " ";
+    free(arr);
+    return 0;
+}
+
+
+// Difficult 1. Implement a Function that Returns a Pointer to the Largest Element in an Array
+#include <iostream>
+using namespace std;
+int* largestElement(int *arr, int n) {
+    int *max = arr;
+    for(int i=1; i<n; i++) {
+        if(arr[i] > *max) max = &arr[i];
+    }
+    return max;
+}
+int main() {
+    int n; cin >> n;
+    int *arr = new int[n];
+    for(int i=0; i<n; i++) cin >> arr[i];
+    int *largest = largestElement(arr, n);
+    cout << *largest;
+    delete[] arr;
+    return 0;
+}
+
+
+// Difficult 2. Create and Manipulate a 2D Array Using Double Pointers
+#include <iostream>
+using namespace std;
+int main() {
+    int r, c;
+    cin >> r >> c;
+    int **arr = new int*[r];
+    for(int i=0; i<r; i++) arr[i] = new int[c];
+    for(int i=0; i<r; i++)
+        for(int j=0; j<c; j++)
+            cin >> arr[i][j];
+    for(int i=0; i<r; i++) {
+        for(int j=0; j<c; j++) cout << arr[i][j] << " ";
+        cout << "\n";
+    }
+    for(int i=0; i<r; i++) delete[] arr[i];
+    delete[] arr;
+    return 0;
+}
+
+
+
+//printing array using pointer
+
+#include<iostream>
+using namespace std;
+int main()
+{
+    int n;
+    cin>>n;
+    int a[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+    for(int i=0;i<n;i++)
+    {
+        int *p=&a[i];
+        cout<<" "<<*p;
+        
+    }
+    return 0;
+}
+
+
+//sum of array using pointers
+
+#include<iostream>
+using namespace std;
+int main()
+{
+    int n;
+    cin>>n;
+    int a[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+    int sum = 0;
+    for(int i=0;i<n;i++)
+    {
+        int *p=&a[i];
+        sum = sum+*p;
+    }
+    cout<<sum;
+    return 0;
+}
+
+// printing address and value using pointer
+#include<iostream>
+using namespace std;
+int main()
+{
+    int var = 5;
+    int *p=&var;
+    cout<<p;
+    return 0;
+}
+
+
+//upper traingle sum
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n;
+    cout<<"Enter the size of the matrix : ";
+    cin>>n;
+    int a[n][n];
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            cin>>a[i][j];
+        }
+    }
+    int sum=0;
+    int sum1=0;
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            if(i<=j)
+            {
+                sum = sum+a[i][j];
+            }
+            if(i>=j)
+            {
+                sum1 = sum1+a[i][j];
+            }
+        }
+    }
+    cout<<sum<<endl;
+    cout<<sum1;
+    return 0;
+}
+
+
+
+//swapping using pointers
+
+#include<iostream>
+using namespace std;
+int main()
+{
+    int x,y;
+    cin>>x>>y;
+    cout<<"The nos before swapping are : "<<endl;
+    cout<<x<<endl;
+    cout<<y<<endl;
+    int *p1=&x;
+    int *p2=&y;
+
+    int t=*p1;
+    *p1=*p2;
+    *p2=t;
+     
+    cout<<"The nos after swapping are : "<<endl;
+    cout<<x<<endl;
+    cout<<y<<endl;
+    return 0;
+}
